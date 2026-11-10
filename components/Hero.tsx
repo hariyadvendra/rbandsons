@@ -1,9 +1,27 @@
 'use client';
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { ArrowUpRight, Flame } from 'lucide-react';
 
 export default function Hero() {
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Direct DOM mutations to bypass browser autoplay restrictions
+      video.defaultMuted = true;
+      video.muted = true;
+
+      const playPromise = video.play();
+      if (playPromise !== undefined) {
+        playPromise.catch(() => {
+          // Silent fallback if low-power mode or browser policy delays playback
+        });
+      }
+    }
+  }, []);
+
   const handleScrollTo = (e: React.MouseEvent<HTMLAnchorElement>, id: string) => {
     e.preventDefault();
     const element = document.getElementById(id);
@@ -20,11 +38,14 @@ export default function Hero() {
       {/* Background Video Layer */}
       <div className="absolute inset-0 w-full h-full overflow-hidden pointer-events-none z-0">
         <video
+          ref={videoRef}
           autoPlay
           loop
           muted
           playsInline
-          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover"
+          webkit-playsinline="true"
+          preload="auto"
+          className="absolute top-1/2 left-1/2 min-w-full min-h-full w-auto h-auto -translate-x-1/2 -translate-y-1/2 object-cover pointer-events-none"
         >
           <source src="/assets/videos/hero.mp4" type="video/mp4" />
         </video>
@@ -75,50 +96,4 @@ export default function Hero() {
           <a
             href="#contact"
             onClick={(e) => handleScrollTo(e, 'contact')}
-            className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-slate-700/80 bg-slate-900/80 backdrop-blur-sm hover:bg-slate-800 text-white font-semibold text-xs uppercase tracking-widest transition-colors"
-          >
-            Talk to Us
-          </a>
-        </div>
-      </div>
-
-      {/* Trust & Metric Counter Strip */}
-      <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 w-full z-10 mt-12">
-        <div className="grid grid-cols-2 md:grid-cols-4 gap-6 pt-6 border-t border-slate-800/80 backdrop-blur-sm">
-          <div>
-            <div className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              60<span className="text-amber-500">+</span>
-            </div>
-            <div className="text-[11px] uppercase tracking-widest text-slate-300 mt-0.5 font-medium">
-              Steel Plants Served
-            </div>
-          </div>
-          <div>
-            <div className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              20<span className="text-amber-500">+</span>
-            </div>
-            <div className="text-[11px] uppercase tracking-widest text-slate-300 mt-0.5 font-medium">
-              Industrial Clients
-            </div>
-          </div>
-          <div>
-            <div className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              5,000<span className="text-amber-500">+</span>
-            </div>
-            <div className="text-[11px] uppercase tracking-widest text-slate-300 mt-0.5 font-medium">
-              Personnel Deployed
-            </div>
-          </div>
-          <div>
-            <div className="text-3xl sm:text-4xl font-black text-white tracking-tight">
-              15<span className="text-amber-500">+</span>
-            </div>
-            <div className="text-[11px] uppercase tracking-widest text-slate-300 mt-0.5 font-medium">
-              Years of Expertise
-            </div>
-          </div>
-        </div>
-      </div>
-    </section>
-  );
-}
+            className="inline-flex items-center justify-center px-6 py-3.5 rounded-md border border-slate-700/80 bg-slate-900/8
