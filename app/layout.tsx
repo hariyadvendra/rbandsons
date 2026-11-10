@@ -80,9 +80,7 @@ export const metadata: Metadata = {
     icon: "/assets/images/rbslogo.jpeg",
     apple: "/assets/images/rbslogo.jpeg",
   },
-  verification: {
-      google: "google3b2e61cc2d4a66fb.html",
-    },
+
 };
 
 const jsonLd = {
