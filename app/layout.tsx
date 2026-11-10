@@ -81,7 +81,7 @@ export const metadata: Metadata = {
     apple: "/assets/images/rbslogo.jpeg",
   },
   verification: {
-      google: "google3b2e61cc2d4a66fb",
+      google: "google3b2e61cc2d4a66fb.html",
     },
 };
 
