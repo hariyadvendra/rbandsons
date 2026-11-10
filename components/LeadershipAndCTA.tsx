@@ -160,8 +160,8 @@ export default function LeadershipAndCTA() {
                   <div>
                     <div className="text-xs font-semibold uppercase tracking-wider text-slate-400">Direct Calling Lines</div>
                     <div className="mt-1 space-y-1">
-                      <a href="tel:9981170833" className="block text-base font-bold text-white hover:text-amber-400 transition">
-                        +91 99811-70833
+                      <a href="tel:9630247101" className="block text-base font-bold text-white hover:text-amber-400 transition">
+                        +91 96302-47101
                       </a>
                       <a href="tel:7389517101" className="block text-base font-bold text-white hover:text-amber-400 transition">
                         +91 73895-17101
