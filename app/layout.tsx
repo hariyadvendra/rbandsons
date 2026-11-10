@@ -80,6 +80,9 @@ export const metadata: Metadata = {
     icon: "/assets/images/rbslogo.jpeg",
     apple: "/assets/images/rbslogo.jpeg",
   },
+  verification: {
+      google: "google3b2e61cc2d4a66fb",
+    },
 };
 
 const jsonLd = {
@@ -156,7 +159,7 @@ const jsonLd = {
     {
       "@type": "Person",
       "@id": "https://www.rbsonsgroup.com/#rbyadav",
-      name: "R. B. Yadav",
+      name: "R B Yadav",
       jobTitle: "Founder & Director",
       worksFor: {
         "@id": "https://www.rbsonsgroup.com/#organization",
